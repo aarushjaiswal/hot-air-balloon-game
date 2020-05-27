@@ -1,6 +1,6 @@
 var sky, skyImg, balloon, balloonImg, blackCloud, blackCloudImg, invisibleGround, blackCloudGroup
 var upperGround, gameState="play", score = 0, goldCoin, bronzeCoin, goldCoinImg, bronzeCoinImg, goldCoinGroup, bronzeCoinGroup
-var bird, birdImg, birdGroup, life = 3, gameOver, restart, gameOverImg, restartImg
+var bird, birdImg, birdGroup, life = 3, gameOver, restart, gameOverImg, restartImg , lifeImg
 
 
 function preload(){
@@ -10,8 +10,9 @@ function preload(){
   goldCoinImg = loadImage("./images/gcoin.png");
   bronzeCoinImg = loadImage("./images/bcoin.png")
   birdImg = loadImage("./images/bird.png");
-  gameOverImg = loadImage("./images/download.png")
-  restartImg = loadImage("./images/download (1).png")
+  gameOverImg = loadImage("./images/game over.png")
+// restartImg = loadImage("./images/download (1).png")
+  lifeImg = loadImage("./images/heart.png")
 }
 
 
@@ -36,9 +37,9 @@ function setup() {
   upperGround.visible=false
 
   gameOver= createSprite(displayWidth/2, displayHeight/2 -200 )
-  restart= createSprite(displayWidth/2, displayHeight/2 +200)
+ // restart= createSprite(displayWidth/2, displayHeight/2 +200)
   gameOver.visible=false
-  restart.visible=false
+  //restart.visible=false
 
   blackCloudGroup=new Group()
   birdGroup=new Group()
@@ -90,8 +91,8 @@ function draw(){
   } else if(gameState === "end") {
     gameOver.visible = true;
     gameOver.addImage(gameOverImg)
-    restart.visible = true;
-    restart.addImage(restartImg)
+   // restart.visible = true;
+    //restart.addImage(restartImg)
     
     sky.velocityX = 0;
 
@@ -114,7 +115,7 @@ function draw(){
   text("you have collected :"+score,displayWidth/2+200,30)
 
   for (var i = 0; i < life; i++){             
-    image(goldCoinImg,30+(i*70),30,40,40)
+    image(lifeImg,30+(i*70),30,40,40)
   }
 }
 
